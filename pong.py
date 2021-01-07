@@ -54,7 +54,6 @@ wn.onkeypress(paddle_b_up, "Up")
 wn.onkeypress(paddle_a_down, "s")
 wn.onkeypress(paddle_b_down, "Down")  
 
-
 # Ball
 ball = turtle.Turtle()
 ball.speed(0)
@@ -62,8 +61,13 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
-
+ball.dx = 0.3
+ball.dy = 0.3
 
 # Main 
 while True:
     wn.update()
+
+    # Ball physics
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
