@@ -13,7 +13,7 @@ score_b = 0
 paddle_a = turtle.Turtle()
 paddle_a.speed(0)
 paddle_a.shape("square")
-paddle_a.color("white")
+paddle_a.color("blue")
 paddle_a.shapesize(stretch_wid=5, stretch_len=1)
 paddle_a.penup()
 paddle_a.goto(-350, 0)
@@ -21,8 +21,8 @@ paddle_a.goto(-350, 0)
 # Paddle B
 paddle_b = turtle.Turtle()
 paddle_b.speed(0)
-paddle_b.shape("square")
-paddle_b.color("white")
+paddle_b.shape("triangle")
+paddle_b.color("red")
 paddle_b.shapesize(stretch_wid=5, stretch_len=1)
 paddle_b.penup()
 paddle_b.goto(+350, 0)
@@ -58,12 +58,12 @@ wn.onkeypress(paddle_b_down, "Down")
 # Ball
 ball = turtle.Turtle()
 ball.speed(0)
-ball.shape("square")
+ball.shape("circle")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
-ball.dx = 0.3
-ball.dy = -0.3
+ball.dx = 0.2
+ball.dy = -0.2
 
 # Score
 score = turtle.Turtle()
@@ -72,8 +72,7 @@ score.color("white")
 score.penup()
 score.hideturtle()
 score.goto(0, 260)
-score.write("Player A: 0  Player B: 0", align="center", font=("Courier", 24, "normal"))
-
+score.write("Player 1: 0  Player 2: 0", align="center", font=("Courier", 24, "normal"))
 
 # Main 
 while True:
@@ -97,14 +96,14 @@ while True:
         ball.dx *= -1
         score_a += 1
         score.clear()
-        score.write("Player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+        score.write("Player 1: {}  Player 2: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
 
     if ball.xcor() < -390:
         ball.goto(0, 0)
         ball.dx *= -1
         score_b += 1
         score.clear()
-        score.write("Player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+        score.write("Player 1: {}  Player 2: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
 
     # Paddle and Ball Collision Physics
 
@@ -115,3 +114,6 @@ while True:
     if (ball.xcor() < -340 and ball.xcor() < -350) and (ball.ycor() < paddle_a.ycor() + 50 and ball.ycor() > paddle_a.ycor() -50):
         ball.setx(-340)
         ball.dx *= -1
+
+
+
